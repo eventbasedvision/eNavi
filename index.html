@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SEBVS: Synthetic Event-based Visual Servoingfor Robot Navigation and Manipulation">
+  <meta name="keywords" content="SEBVS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>eNavi: Event-based Imitation Policies for Low-Light Indoor
+Mobile Robot Navigation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./media/css/bulma.min.css">
+  <link rel="stylesheet" href="./media/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./media/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./media/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./media/css/index.css">
+  <link rel="icon" href="./media/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./media/js/fontawesome.all.min.js"></script>
+  <script src="./media/js/bulma-carousel.min.js"></script>
+  <script src="./media/js/bulma-slider.min.js"></script>
+  <script src="./media/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            eNavi: Event-based Imitation Policies for Low-Light Indoor
+Mobile Robot Navigation
+          </h1>
+
+          <div class="is-size-7 publication-authors">
+						<p>(Under Review)</p>
+					</div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/Prithvijai">Prithvi Jai Ramesh</a>,</span>
+            <span class="author-block">
+              <a href="https://github.com/Kaustav97">Kaustav Chanda</a>,</span>
+            <span class="author-block">
+              <a href="https://github.com/Krishnaa-Vinod">Krishna Vinod</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/joe-rabbit">Joseph Raj Vishal</a>,</span>
+            <span class="author-block">
+              <a href="https://github.com/chakravarthi589">Bharatesh Chakravarthi</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Arizona State University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!--
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+                 <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> --> 
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/eventbasedvision/eNavi"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://www.dropbox.com/scl/fo/ywn9hx1pj1fgv4gx2pyam/ADNASSQ_FuqK6blus3aaiVo?dl=0&rlkey=4qu9j1ecs0xk6ibo8dnwbmlav"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+	<section class="hero teaser">
+		<div class="container is-max-desktop">
+			<div class="hero-body">
+				<!-- <img src="media/eTraM/gifs/eTramGIF-cropped.gif" class="center"/> -->
+				<img src="media/images/fig01.png" class="center" />
+				<h2 class="subtitles has-text-centered">
+					<strong>eNavi Dataset</strong>
+				</h2>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Event cameras provide high dynamic range and microsecond-level temporal resolution, making them well-suited for indoor robot navigation, where conventional RGB cameras degrade under fast motion or low-light conditions. Despite advances in event-based perception spanning detection, SLAM, and pose estimation, there remains limited research on end-to-end control policies that exploit the asynchronous nature of event streams. To address this gap, we introduce a real-world indoor person-following dataset collected using a TurtleBot 2 robot, featuring synchronized raw event streams, RGB frames, and expert control actions across multiple indoor maps, trajectories under both normal and low-light conditions. We further build a multimodal data preprocessing pipeline that temporally aligns event and RGB observations while reconstructing ground-truth actions from odometry to support high-quality imitation learning. Building on this dataset, we propose a late-fusion RGB-Event navigation policy that combines dual MobileNet encoders with a transformer-based fusion module trained via behavioral cloning. A systematic evaluation of RGB-only, Event-only, and RGB-Event fusion models across 12 training variations ranging from single-path imitation to general multi-path imitation shows that policies incorporating event data, particularly the fusion model, achieve improved robustness and lower action prediction error, especially in unseen low-light conditions where RGB-only models fail.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!--/ Abstract. -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<hr>
+					<h2 class="title is-3">eNavi Data collection</h2>
+					<img src="media/images/figure02.jpg" class="center" />
+					<div class="content has-text-justified">
+						<br>
+						<p> 
+              The data collection platform is built upon a TurtleBot 2 mobile robot (Kobuki base), with all cameras and computing units rigidly mounted to the top plate of the chassis. Onboard processing is handled by an NVIDIA Jetson Orin Nano, which runs the Robot Operating System 2 (ROS 2) framework to manage sensor drivers and data logging.
+
+The sensing suite consists of a heterogeneous camera configuration. To minimize parallax, both cameras are mounted on a beam splitter setup. The primary sensor is a Prophesee Metavision EVK4 event camera featuring the IMX636 sensor with a resolution of 1280 × 720, offering high temporal resolution with latency below 220 μs at 1k lux. The secondary sensor is a Flir Spinnaker RGB camera configured to capture frames at the same 1280 × 720 resolution as the event sensor to facilitate approximate pixel-level correspondence. The event camera interfaces with ROS 2 via the metavision_driver, while the RGB camera uses standard V4L2 drivers.
+
+For connectivity, a TP-Link Wi-Fi dongle is attached to the Jetson Orin Nano. This wireless link enables remote development access via SSH and facilitates manual teleoperation of the robot using a joystick controller during data collection.
+
+To ensure generalization of the learned policy, we curate the dataset across three distinct indoor environments. We employ two different human subjects to introduce variability in clothing, body shape, and gait. The subjects are instructed to vary their walking speeds and trajectories to capture a broad range of motion dynamics.
+
+The full dataset comprises approximately two hours of driving data, segmented into more than 175 episodes. To facilitate benchmarking, we enforce a separation of environments: one map is used for in-distribution training and testing, while the remaining two environments are reserved for generalization experiments. This split allows us to evaluate performance both within seen environments and in previously unseen layouts. We plan to release the dataset as an open-source contribution to the research community.
+              
+						</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<hr>
+					<h2 class="title is-3">ENP Archieture </h2>
+					<img src="media/images/figure03.jpg" class="center" />
+					<div class="content has-text-justified">
+						<br>
+						<p> 
+              The ENP architecture employs a late-fusion strategy to process synchronous RGB and event-frame tensors. The model consists of two stages: (i) modality-specific encoding and (ii) attention-based fusion followed by a control head.
+
+              Two parallel MobileNetV3-Small encoders extract feature embeddings from each modality. The RGB encoder processes 3-channel RGB frames with frozen pretrained weights to preserve learned features. The Event encoder processes the 2-channel event representation with trainable weights, allowing it to learn features tailored to sparse, high-temporal-resolution event data. Each encoder outputs a compact feature vector passed to the fusion module.
+
+              The feature vectors from both encoders are tokenized and concatenated into a unified sequence (2 feature tokens) processed by a Transformer encoder block. This self-attention-based fusion enables the policy to adaptively weigh RGB context versus event dynamics per sample, which is important under varying illumination and motion conditions. The fused representation is fed into an MLP policy head that predicts continuous differential-drive commands: linear velocity (v) and angular velocity (ω). At inference, the policy maps each synchronized observation to an action.
+
+              To systematically study the contribution of event data under different levels of task complexity and illumination, we train a family of ENP variants spanning three architectures (RGB-only, Event-only, RGB+Event fusion) and four dataset subsets from eNavi, yielding 12 model variants.
+                  
+						</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</section>
+
+
+  	<section class="hero teaser">
+		<div class="container is-max-desktop">
+
+			<div class="columns is-centered has-text-centered">
+				<div class="column is-four-fifths">
+					<hr>
+					<h2 class="title is-3">Results</h2>
+					<img src="media/images/table.png" class="center" />
+          <!-- <img src="media/images/table_5.png" class="center" /> -->
+					<div class="content has-text-justified">
+						<br>
+						<p> We evaluated each policy variant over 15 simulated episodes per task. For ERPNav, the RGB+Event model achieved the lowest centroid tracking error (106.7 ± 26.3 px) and the highest success rate (93.3%), while maintaining an appropriate following distance, outperforming RGB-only and Event-only baselines.
+ For ERPArm, early fusion likewise delivered the best grasp-ready pose predictions: in single-object scenes it reached 41.1 ± 9.5 mm error, 71.4% accuracy, 7.8 ± 0.6 ms latency, and 51.7% success; in multi-object scenes it achieved 52.6 ± 11.3 mm, 58.9% accuracy, 7.6 ± 0.5 ms latency, and 31.8% success.
+ Although Event-only inference was the fastest (≈3.0–3.2 ms), it trailed in accuracy and success, confirming that RGB+Event fusion offers the best overall trade-off between precision, robustness, and responsiveness across both navigation and manipulation tasks.
+
+						</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h3 class="title is-3">Recordings</h3>
+      <div class="publication-videos">
+        <div class="video-wrapper">
+          <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/EU11No6BcIY"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <!-- <div class="video-wrapper">
+          <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/UZLcERQZQM8"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div> -->
+      </div>
+    </div>
+    <hr>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- <pre><code>@inproceedings{vinod2025sebvs,
+  title     = {SEBVS: Synthetic Event-based Visual Servoing for Robot Navigation and Manipulation},
+  author    = {Vinod, Krishna and Ramesh, Prithvi Jai and B N, Pavan Kumar and Chakravarthi, Bharatesh},
+  booktitle = {},
+  year      = {2025}
+}
+</code></pre> -->
+  </div>
+</section>
+
+
+	<footer class="footer">
+		<div class="container">
+			<div class="content has-text-centered">
+			</div>
+			<div class="columns is-centered">
+				<div class="column is-8">
+					<div class="content">
+						<center>
+							<p>
+								This website is licensed under a <a rel="license"
+									href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+									Commons Attribution-ShareAlike 4.0 International License</a>.
+								This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+								We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing
+								this template.
+							</p>
+						</center>
+					</div>
+				</div>
+				</p>
+			</div>
+		</div>
+		</div>
+		</div>
+	</footer>
+
+</body>
+</html>
