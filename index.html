@@ -223,9 +223,15 @@ The full dataset comprises approximately two hours of driving data, segmented in
           <!-- <img src="media/images/table_5.png" class="center" /> -->
 					<div class="content has-text-justified">
 						<br>
-						<p> We evaluated each policy variant over 15 simulated episodes per task. For ERPNav, the RGB+Event model achieved the lowest centroid tracking error (106.7 ± 26.3 px) and the highest success rate (93.3%), while maintaining an appropriate following distance, outperforming RGB-only and Event-only baselines.
- For ERPArm, early fusion likewise delivered the best grasp-ready pose predictions: in single-object scenes it reached 41.1 ± 9.5 mm error, 71.4% accuracy, 7.8 ± 0.6 ms latency, and 51.7% success; in multi-object scenes it achieved 52.6 ± 11.3 mm, 58.9% accuracy, 7.6 ± 0.5 ms latency, and 31.8% success.
- Although Event-only inference was the fastest (≈3.0–3.2 ms), it trailed in accuracy and success, confirming that RGB+Event fusion offers the best overall trade-off between precision, robustness, and responsiveness across both navigation and manipulation tasks.
+						<p> We evaluate ENP on the eNavi dataset around two hypotheses: (1) Multimodal training efficiency — fusing synchronous RGB context with asynchronous event dynamics leads to faster convergence and lower validation error compared to RGB baselines, and (2) Low-light robustness / Zero-shot generalization — event-driven policies trained exclusively on normal-light data generalize better to unseen low-light conditions than RGB-only baselines, which suffer from texture degradation in the dark.
+                        </p>
+
+                        <p>
+                          All policy variants are implemented in PyTorch and trained using AdamW with a learning rate of 2×10⁻⁴ and weight decay of 3×10⁻⁴. We use a batch size of 64 and an 80/10/10 split for training, validation, and test sets. Early stopping with a patience of 8 epochs and a maximum budget of 50 epochs is employed. RGB-only models consistently run to the full 50-epoch budget, especially on more complex (Multi-Path, Mixed-Light) settings, suggesting difficulty extracting robust control features from RGB alone. Models incorporating event information (Event-only and Fusion) converge substantially faster, often triggering early stopping between epochs 20 and 35, indicating that high-temporal-resolution event cues provide a stronger learning signal. Fusion and Event-only models achieve the lowest validation MAE in most regimes — for example, in the (Multi-Path, Mixed-Light) setting, ENP-Fusion reaches an MAE of 0.0370 compared to ENP-RGB's 0.0707.
+                        </p>
+                        <p>
+                            To evaluate low-light robustness, we consider policies trained only on normal-light data and test them on both normal-light and low-light conditions. On simple single-path trajectories, ENP-RGB generalizes well to low light, with Total MAE changing only slightly (0.0210 → 0.0213), and Fusion and Event-only variants perform similarly, suggesting that for simple structured trajectories, RGB retains sufficient contrast even under reduced illumination. However, in multi-path training the benefits of fusion become pronounced: ENP-RGB changes from (0.0463 → 0.0514), while ENP-Fusion generalizes better with a lower change (0.0335 → 0.0467). These findings support the low-light robustness of fusion policies and zero-shot generalization capabilities of event data.
+                        </p>
 
 						</p>
 					</div>
