@@ -14,7 +14,7 @@
 <hr>
 
 <div style="text-align: center;">
-<img src="/home/saitama/ASU Dropbox/Prithvi Ramesh/eNavi/media/images/figure02.jpg"/>
+<img src="./media/images/figure02.jpg"/>
 </div>
 
 <p align="justify">
@@ -67,5 +67,4 @@ If you use our package, we appreciate a citation to our paper and to the origina
 }
 
 ```
-
 
