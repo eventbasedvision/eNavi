@@ -44,7 +44,7 @@ eNavi/
 │   │   ├── p1_low_rgb_e050_val0.058427.pt
 │   │   └── p1_rgb_e048_val0.054862.pt
 │   └── models.py             # ENP architecture (RGB, Event, Fusion variants)
-├── train_logs_ENP.pdf        # Training and validation logs for all 12 variants
+├── train_logs_ENP.pdf        # Training logs for all 12 variants
 ├── index.html                # Project website
 ├── LICENSE
 └── README.md
